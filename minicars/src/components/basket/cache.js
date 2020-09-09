@@ -1,4 +1,4 @@
-const cacheKey = 'crystallize-app-basket';
+const cacheKey = 'crystallize-basket';
 
 export async function retrieveFromCache() {
   try {
