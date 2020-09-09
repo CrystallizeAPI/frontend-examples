@@ -73,7 +73,7 @@ export default async function sendOrderConfirmation(orderId) {
 
     await sendEmail({
       to: email,
-      from: 'bard@crystallize.com',
+      from: 'example@crystallize.com',
       subject: 'Order Summary',
       html
     });

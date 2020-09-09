@@ -59,7 +59,7 @@ export default async (req, res) => {
     try {
       await sgMail.send({
         to: email,
-        from: 'bard@crystallize.com',
+        from: 'example@crystallize.com',
         subject: 'Magic Link',
         html
       });
