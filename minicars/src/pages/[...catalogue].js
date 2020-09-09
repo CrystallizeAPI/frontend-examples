@@ -7,6 +7,7 @@
  * If we get nothing back from Crystallize, it's a 404
  */
 
+//  hello
 import React from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -23,6 +24,9 @@ import Layout from 'components/layout';
 import DocPage, { getData as getDataDoc } from 'page-components/document';
 import FolderPage, { getData as getDataFolder } from 'page-components/folder';
 import ProdPage, { getData as getDataProd } from 'page-components/product';
+import ManufacturerPage, {
+  getData as getDataManufacturer
+} from 'page-components/manufacturer';
 
 const typesMap = {
   document: {
@@ -39,6 +43,13 @@ const typesMap = {
   }
 };
 
+const shapesMap = {
+  Manufacturer: {
+    component: ManufacturerPage,
+    getData: getDataManufacturer
+  }
+};
+
 export async function getStaticProps({ params, preview }) {
   const { catalogue } = params;
   const locale = getLocaleFromContext(params);
@@ -52,6 +63,9 @@ export async function getStaticProps({ params, preview }) {
           catalogue(language: $language, path: $path) {
             type
             language
+            shape {
+              name
+            }
           }
         }
       `,
@@ -60,9 +74,12 @@ export async function getStaticProps({ params, preview }) {
         path: asPath
       }
     });
-    const { type } = getItemType.data.catalogue;
+    const {
+      type,
+      shape: { name: shapeName }
+    } = getItemType.data.catalogue;
 
-    const renderer = typesMap[type] || typesMap.folder;
+    const renderer = shapesMap[shapeName] || typesMap[type] || typesMap.folder;
 
     const data = await renderer.getData({
       asPath,
@@ -73,7 +90,8 @@ export async function getStaticProps({ params, preview }) {
     return {
       props: {
         ...data,
-        type
+        type,
+        shapeName
       },
       revalidate: 1
     };
@@ -164,9 +182,9 @@ export async function getStaticPaths() {
   };
 }
 
-export default function GenericCatalogueItem({ type, ...rest }) {
+export default function GenericCatalogueItem({ shapeName, type, ...rest }) {
   const router = useRouter();
-  const renderer = typesMap[type] || typesMap.folder;
+  const renderer = shapesMap[shapeName] || typesMap[type] || typesMap.folder;
   const Component = renderer.component;
 
   if (router.isFallback) {
