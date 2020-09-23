@@ -36,6 +36,23 @@ export default `
           }
         }
       }
+      relatingItems {
+        id
+        name
+        path
+        ... on Product {
+          defaultVariant {
+            images {
+              url
+              altText
+              variants {
+                url
+                width
+              }
+            }
+          }
+        }
+      }
     }
   }
 `;

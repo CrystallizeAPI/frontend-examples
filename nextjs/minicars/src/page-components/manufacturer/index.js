@@ -27,9 +27,8 @@ export default function ManufacturerPage({ manufacturer, preview }) {
   const name = manufacturer.name.content.text;
   const images = manufacturer.images.content.images;
   const brief = manufacturer.brief.content.paragraphs;
-  const relatedProducts = null;
-
-  console.log(brief);
+  const relatingItems = manufacturer.relatingItems;
+  console.log({ relatingItems });
 
   return (
     <Layout title={name || manufacturer.name} preview={preview}>
@@ -51,16 +50,14 @@ export default function ManufacturerPage({ manufacturer, preview }) {
 
         <ParagraphCollection paragraphs={brief} />
       </Outer>
-      {relatedProducts?.content?.items?.length && (
+      {relatingItems?.length && (
         <Related>
           <H2>
             {t('product.relatedProduct', {
-              count: relatedProducts.content.items.length
+              count: relatingItems.length
             })}
           </H2>
-          <List>
-            {relatedProducts.content.items.map((item) => items(item))}
-          </List>
+          <List>{relatingItems.map((item) => items(item))}</List>
         </Related>
       )}
     </Layout>
