@@ -1,3 +1,5 @@
+import fragments from 'lib/graph/fragments';
+
 export default `
   query MANUFACTURER_PAGE($language: String!, $path: String, $version: VersionLabel! ) {
     manufacturer: catalogue(language: $language, path: $path, version: $version) {
@@ -37,22 +39,10 @@ export default `
         }
       }
       relatingItems {
-        id
-        name
-        path
-        ... on Product {
-          defaultVariant {
-            images {
-              url
-              altText
-              variants {
-                url
-                width
-              }
-            }
-          }
-        }
+        ...item
+        ...product
       }
     }
   }
+  ${fragments}
 `;

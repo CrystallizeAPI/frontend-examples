@@ -12,6 +12,7 @@ export const Outer = styled.a`
   background: var(--color-box-background);
   transition: all 0.1s ease-in-out;
   grid-column-end: span 3;
+  justify-content: center;
   ${responsive.xs} {
     margin-bottom: 15px;
   }
@@ -19,25 +20,26 @@ export const Outer = styled.a`
 
 export const Inner = styled.div`
   padding: 20px;
-  height: 100%;
+  height: 450px;
   display: flex;
   justify-content: center;
   flex-direction: column;
 `;
 
 export const ImageWrapper = styled.div`
-  position: relative;
+  position: absolute;
   z-index: 1;
+  left: 0;
+  top: 0;
   overflow: hidden;
   width: 100%;
-  height: 250px;
+  height: 100%;
 `;
 
 export const Img = styled(Image)`
   width: 100%;
   height: 100%;
   overflow: hidden;
-
   > img {
     display: block;
     object-fit: cover;
@@ -51,10 +53,10 @@ export const Img = styled(Image)`
 export const Text = styled.div`
   z-index: 2;
   width: 100%;
-  height: 150px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   text-align: center;
   left: 0;
   width: 100%;

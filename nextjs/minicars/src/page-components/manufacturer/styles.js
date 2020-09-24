@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import Image from '@crystallize/react-image';
 
-import { H2 as H, responsive } from 'ui';
+import { Outer as O, H2 as H, responsive } from 'ui';
 
+export const Outer = styled(O)`
+  min-height: 0;
+  max-width: 1440px;
+`;
 export const HeroImage = styled.div`
   display: block;
   max-width: 250px;
@@ -54,8 +58,8 @@ export const H2 = styled(H)`
 
 export const Related = styled.div`
   border-top: 2px solid #efefef;
-  max-width: 1600px;
-  padding: 100px 100px 0 100px;
+  max-width: 1440px;
+  padding: 100px 0 0 0;
   margin: 100px auto;
   display: block;
   ${responsive.smAndLess} {

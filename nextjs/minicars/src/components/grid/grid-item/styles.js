@@ -83,6 +83,19 @@ export const Outer = styled.a`
       justify-content: center;
       padding-bottom: 50px;
       text-align: center;
+      height: 600px;
+      ${ImageWrapper} {
+        position: absolute;
+        left: 0;
+        top: 0;
+        img {
+          object-fit: cover;
+        }
+      }
+      ${Text} {
+        height: 100%;
+        justify-content: flex-end;
+      }
     }
     &.cell-1x2 {
       flex-direction: row-reverse;

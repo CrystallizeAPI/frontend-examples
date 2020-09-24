@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { H1, Header, Outer } from 'ui';
+import { H1, Header } from 'ui';
 import ParagraphCollection from 'components/shape/components/paragraph-collection';
 import Layout from 'components/layout';
 import { simplyFetchFromGraph } from 'lib/graph';
@@ -8,7 +8,7 @@ import items from 'components/items';
 import { useT } from 'lib/i18n';
 
 import query from './query';
-import { HeroImage, Img, List, H2, Related } from './styles';
+import { HeroImage, Img, List, H2, Related, Outer } from './styles';
 
 export async function getData({ asPath, language, preview = null }) {
   const { data } = await simplyFetchFromGraph({
@@ -34,21 +34,19 @@ export default function ManufacturerPage({ manufacturer, preview }) {
     <Layout title={name || manufacturer.name} preview={preview}>
       <Outer>
         <Header centerContent>
+          <HeroImage>
+            {images?.map((img, i) => (
+              <Img
+                key={img.url}
+                {...img}
+                alt={img.altText}
+                sizes={i > 0 ? '40vw' : '80vw'}
+              />
+            ))}
+          </HeroImage>
           <H1>{name}</H1>
+          <ParagraphCollection paragraphs={brief} />
         </Header>
-
-        <HeroImage>
-          {images?.map((img, i) => (
-            <Img
-              key={img.url}
-              {...img}
-              alt={img.altText}
-              sizes={i > 0 ? '40vw' : '80vw'}
-            />
-          ))}
-        </HeroImage>
-
-        <ParagraphCollection paragraphs={brief} />
       </Outer>
       {relatingItems?.length && (
         <Related>
