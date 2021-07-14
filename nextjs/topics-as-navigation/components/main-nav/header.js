@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 import { useTenant } from "../tenant-context";
 import styles from "../../styles/MainNav.module.css";
@@ -7,6 +8,9 @@ export function Header() {
   const tenant = useTenant();
   const [topics, setTopics] = useState(false);
 
+  /**
+   * Fetch the root topics from Crystallize
+   */
   useEffect(() => {
     (async function getTopics() {
       const response = await tenant.fetchFrom.catalogue({
@@ -28,9 +32,9 @@ export function Header() {
       {!topics
         ? "Getting topics for navigation..."
         : topics.map((topic) => (
-            <a href={topic.path} key={topic.path}>
-              {topic.name}
-            </a>
+            <Link href={topic.path} key={topic.path}>
+              <a>{topic.name}</a>
+            </Link>
           ))}
     </div>
   );

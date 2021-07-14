@@ -13,6 +13,12 @@ a:hover {
   text-decoration: none;
 }
 
+h1 {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
 textarea,
 input[type="color"],
 input[type="date"],
@@ -39,15 +45,10 @@ input[type="url"] {
 }
 
 button {
-  display: inline-flex;
-  border-radius: 0;
+  display: inline-block;
   border: none;
-  padding: 0;
   appearance: none;
   cursor: pointer;
-  flex: 1 1 auto;
-  background: #ddd;
-  color: #fff;
   font-weight: 600;
   text-decoration: none;
   text-align: center;
@@ -56,6 +57,19 @@ button {
   border: 2px solid transparent;
   background: #facbcf;
   color: #4d525b;
+}
+
+button:hover {
+  background: #dab0b4;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+figure {
+  margin: 0;
+  display: block;
 }
 
 * {

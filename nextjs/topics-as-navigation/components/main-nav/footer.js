@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import { useTenant } from "../tenant-context";
 import styles from "../../styles/MainNav.module.css";
@@ -7,6 +8,7 @@ import styles from "../../styles/MainNav.module.css";
 function ChangeTenant() {
   const input = useRef();
   const tenant = useTenant();
+  const { push } = useRouter();
   const [t, sT] = useState(tenant.identifier);
   const [show, setShow] = useState(false);
 
@@ -14,6 +16,7 @@ function ChangeTenant() {
     if (e.code === "Enter") {
       tenant.setIdentifier(e.target.value);
       setShow(false);
+      push("/");
     }
   }
 
