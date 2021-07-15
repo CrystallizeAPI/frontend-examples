@@ -28,23 +28,26 @@
 }
 
 .nextLevel {
-  margin: 2em 0 2em -0.5em;
+  margin: 2em 0;
   padding: 0;
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .nextLevel li {
   display: inline-block;
-  margin: 0 0.5em;
+  margin: 0;
 }
 
 .nextLevel a {
+  display: inline-block;
   background: #7e8491;
   color: #fff;
   text-decoration: none;
   border-radius: 2em;
   padding: 0.5em 1em;
-  transform: scale(0.95);
 }
 
 .nextLevel a:hover {
@@ -95,6 +98,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.itemLink {
+  flex: 1 1 auto;
+  display: flex;
 }
 
 .itemTopics {

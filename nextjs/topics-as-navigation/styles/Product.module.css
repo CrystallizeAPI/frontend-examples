@@ -1,0 +1,45 @@
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3em;
+}
+
+.title {
+  margin-bottom: 25px;
+}
+
+.main img {
+  width: 500px;
+  height: auto;
+}
+
+.topics {
+  margin: 2em 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.topics li {
+  display: inline-block;
+  margin: 0;
+}
+
+.topics a {
+  display: inline-block;
+  background: #7e8491;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 2em;
+  padding: 0.5em 1em;
+}
+
+.topics a:hover {
+  background: #5a5f68;
+}
+
+.topics a:active {
+  transform: scale(0.95);
+}

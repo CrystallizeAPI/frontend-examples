@@ -144,7 +144,15 @@ export default function Topic() {
             {products.map((prod) => (
               <li key={prod.path}>
                 <div className={styles.itemImageWrap}>
-                  <Image {...prod.defaultVariant.firstImage} sizes="600px" />
+                  <Link href={`/product${prod.path}`}>
+                    <a className={styles.itemLink}>
+                      {/* eslint-disable-next-line jsx-a11y/alt-text */}
+                      <Image
+                        {...prod.defaultVariant.firstImage}
+                        sizes="600px"
+                      />
+                    </a>
+                  </Link>
                   <div className={styles.itemTopics}>
                     {prod.topics?.map((t) => (
                       <Link href={t.path} key={t.path}>
