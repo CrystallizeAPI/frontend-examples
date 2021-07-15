@@ -13,17 +13,13 @@
 .breadcrumbs li {
   margin: 0 0.25em;
   display: inline-block;
+  opacity: 0.8;
 }
 
 .breadcrumbs li:not(:last-child)::after {
   display: inline-block;
   content: ">";
   margin-left: 0.75em;
-}
-
-.breadcrumbs a {
-  font-size: 0.9em;
-  opacity: 0.6;
 }
 
 .nextLevel {
