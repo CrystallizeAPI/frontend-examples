@@ -55,7 +55,7 @@ export default function Topic() {
                 }
               }
 
-              items (first: 6) {
+              items (first: 20) {
                 edges {
                   node {
                     ... on Product {
