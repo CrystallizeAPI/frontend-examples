@@ -21,10 +21,8 @@ function createFetch(uri) {
 export function createFetchers(identifier) {
   return {
     catalogue: createFetch(
-      `https://api-dev.crystallize.digital/${identifier}/catalogue`
+      `https://api.crystallize.com/${identifier}/catalogue`
     ),
-    search: createFetch(
-      `https://api-dev.crystallize.digital/${identifier}/search`
-    ),
+    search: createFetch(`https://api.crystallize.com/${identifier}/search`),
   };
 }

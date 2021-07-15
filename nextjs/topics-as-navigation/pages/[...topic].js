@@ -14,7 +14,7 @@ function handleBreadcrumbItem(arr, crumb) {
   }
 }
 
-export default function Topic(props) {
+export default function Topic() {
   const { query } = useRouter();
   const tenant = useTenant();
   const [topic, setTopic] = useState(null);
@@ -58,9 +58,13 @@ export default function Topic(props) {
               items (first: 6) {
                 edges {
                   node {
-                    path
-                    name
                     ... on Product {
+                      path
+                      name
+                      topics {
+                        path
+                        name
+                      }
                       defaultVariant {
                         firstImage {
                           altText
@@ -87,7 +91,7 @@ export default function Topic(props) {
       });
       setTopic(response.data.topic);
     })();
-  }, [tenant]);
+  }, [tenant, topicPath]);
 
   if (!topic) {
     return null;
@@ -139,7 +143,16 @@ export default function Topic(props) {
           <ul className={styles.items}>
             {products.map((prod) => (
               <li key={prod.path}>
-                <Image {...prod.defaultVariant.firstImage} sizes="200px" />
+                <div className={styles.itemImageWrap}>
+                  <Image {...prod.defaultVariant.firstImage} sizes="600px" />
+                  <div className={styles.itemTopics}>
+                    {prod.topics?.map((t) => (
+                      <Link href={t.path} key={t.path}>
+                        <a>{t.name}</a>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
                 <h3>{prod.name}</h3>
               </li>
             ))}
